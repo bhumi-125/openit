@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy 21st Birthday Kritka! 🐼</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Fredoka+One&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Bubblegum Sans", cursive;
+        background: linear-gradient(
+          135deg,
+          #667eea 0%,
+          #764ba2 50%,
+          #f093fb 100%
+        );
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* Floating background elements */
+      .bg-emoji {
+        position: fixed;
+        font-size: 40px;
+        opacity: 0.2;
+        animation: floatAround 15s infinite ease-in-out;
+        pointer-events: none;
+      }
+
+      @keyframes floatAround {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        25% {
+          transform: translate(50px, -50px) rotate(90deg);
+        }
+        50% {
+          transform: translate(-30px, -100px) rotate(180deg);
+        }
+        75% {
+          transform: translate(-80px, -30px) rotate(270deg);
+        }
+      }
+
+      .container {
+        text-align: center;
+        padding: 20px;
+        max-width: 900px;
+        width: 100%;
+        position: relative;
+        z-index: 10;
+      }
+
+      .screen {
+        display: none;
+        animation: fadeIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .screen.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.5) rotate(-5deg);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) rotate(0deg);
+        }
+      }
+
+      h1 {
+        font-family: "Fredoka One", cursive;
+        color: white;
+        font-size: 3.5em;
+        margin-bottom: 30px;
+        text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2),
+          8px 8px 0px rgba(0, 0, 0, 0.1);
+        animation: titleBounce 2s infinite;
+      }
+
+      @keyframes titleBounce {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .card {
+        background: linear-gradient(135deg, #ffffff 0%, #ffeef8 100%);
+        border-radius: 30px;
+        padding: 50px;
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3),
+          inset 0 0 0 3px rgba(255, 255, 255, 0.8);
+        margin: 20px auto;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card::before {
+        content: "🎉";
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        font-size: 100px;
+        opacity: 0.1;
+        transform: rotate(20deg);
+      }
+
+      .card::after {
+        content: "🎂";
+        position: absolute;
+        bottom: -20px;
+        left: -20px;
+        font-size: 100px;
+        opacity: 0.1;
+        transform: rotate(-20deg);
+      }
+
+      /* Welcome Screen */
+      .welcome-panda {
+        font-size: 200px;
+        animation: pandaWiggle 1s infinite;
+        display: inline-block;
+        cursor: pointer;
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+      }
+
+      @keyframes pandaWiggle {
+        0%,
+        100% {
+          transform: rotate(-5deg);
+        }
+        50% {
+          transform: rotate(5deg);
+        }
+      }
+
+      .welcome-text {
+        font-size: 2em;
+        color: #764ba2;
+        margin: 30px 0;
+        font-weight: bold;
+      }
+
+      .start-btn {
+        padding: 20px 60px;
+        font-size: 1.5em;
+        border: none;
+        border-radius: 60px;
+        cursor: pointer;
+        background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+        color: white;
+        font-weight: bold;
+        font-family: "Fredoka One", cursive;
+        box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+        transition: all 0.3s;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .start-btn:hover {
+        transform: scale(1.1) rotate(-2deg);
+        box-shadow: 0 15px 40px rgba(255, 107, 157, 0.6);
+      }
+
+      .start-btn:active {
+        transform: scale(0.95);
+      }
+
+      /* Balloon Screen */
+      .balloon-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin: 40px 0;
+      }
+
+      .balloon {
+        width: 90px;
+        height: 110px;
+        background: linear-gradient(
+          145deg,
+          var(--balloon-color),
+          var(--balloon-dark)
+        );
+        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        position: relative;
+        cursor: pointer;
+        transition: transform 0.2s;
+        animation: float 3s ease-in-out infinite;
+        box-shadow: inset -10px -10px 30px rgba(0, 0, 0, 0.1),
+          0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .balloon:hover {
+        transform: scale(1.15) rotate(5deg);
+      }
+
+      .balloon::before {
+        content: "✨";
+        position: absolute;
+        top: 10px;
+        left: 15px;
+        font-size: 20px;
+      }
+
+      .balloon:nth-child(1) {
+        --balloon-color: #ff6b9d;
+        --balloon-dark: #ee5a6f;
+        animation-delay: 0s;
+      }
+      .balloon:nth-child(2) {
+        --balloon-color: #4ecdc4;
+        --balloon-dark: #45b7b8;
+        animation-delay: 0.5s;
+      }
+      .balloon:nth-child(3) {
+        --balloon-color: #ffd93d;
+        --balloon-dark: #ffbe0b;
+        animation-delay: 1s;
+      }
+      .balloon:nth-child(4) {
+        --balloon-color: #95e1d3;
+        --balloon-dark: #76c7c0;
+        animation-delay: 1.5s;
+      }
+      .balloon:nth-child(5) {
+        --balloon-color: #c06c84;
+        --balloon-dark: #a05672;
+        animation-delay: 2s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(-2deg);
+        }
+        50% {
+          transform: translateY(-25px) rotate(2deg);
+        }
+      }
+
+      .balloon::after {
+        content: "";
+        position: absolute;
+        bottom: -40px;
+        left: 50%;
+        width: 3px;
+        height: 40px;
+        background: linear-gradient(to bottom, #666, transparent);
+        transform: translateX(-50%);
+      }
+
+      @keyframes pop {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.5);
+          opacity: 0.8;
+        }
+        100% {
+          transform: scale(0);
+          opacity: 0;
+        }
+      }
+
+      .popped {
+        animation: pop 0.4s forwards;
+      }
+
+      .pop-emoji {
+        position: absolute;
+        font-size: 40px;
+        animation: popFly 1s forwards;
+        pointer-events: none;
+      }
+
+      @keyframes popFly {
+        0% {
+          transform: translate(0, 0) scale(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(var(--x), var(--y)) scale(1);
+          opacity: 0;
+        }
+      }
+
+      /* Walking Panda Story */
+      .story-container {
+        width: 100%;
+        height: 450px;
+        position: relative;
+        background: linear-gradient(
+          to bottom,
+          #87ceeb 0%,
+          #e0f6ff 50%,
+          #98d8c8 100%
+        );
+        border-radius: 30px;
+        overflow: hidden;
+        margin: 30px 0;
+        box-shadow: inset 0 -5px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .sun {
+        position: absolute;
+        top: 30px;
+        right: 50px;
+        width: 80px;
+        height: 80px;
+        background: #ffd700;
+        border-radius: 50%;
+        box-shadow: 0 0 50px rgba(255, 215, 0, 0.6);
+        animation: sunShine 2s infinite;
+      }
+
+      @keyframes sunShine {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 50px rgba(255, 215, 0, 0.6);
+        }
+        50% {
+          transform: scale(1.1);
+          box-shadow: 0 0 80px rgba(255, 215, 0, 0.8);
+        }
+      }
+
+      .walking-panda {
+        position: absolute;
+        bottom: 80px;
+        left: -150px;
+        font-size: 100px;
+        animation: walk 10s linear forwards;
+        filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
+      }
+
+      @keyframes walk {
+        0% {
+          left: -150px;
+          transform: scaleX(1);
+        }
+        48% {
+          transform: scaleX(1);
+        }
+        50% {
+          transform: scaleX(-1) translateY(-20px);
+        }
+        52% {
+          transform: scaleX(-1);
+        }
+        100% {
+          left: calc(100% + 50px);
+          transform: scaleX(-1);
+        }
+      }
+
+      .dialogue-bubble {
+        position: absolute;
+        background: white;
+        padding: 20px 30px;
+        border-radius: 25px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        font-size: 1.4em;
+        max-width: 350px;
+        opacity: 0;
+        animation: fadeInBubble 0.6s forwards;
+        border: 3px solid #764ba2;
+        font-weight: bold;
+        color: #764ba2;
+      }
+
+      .dialogue-bubble::after {
+        content: "";
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-top: 20px solid white;
+        transform: translateX(-50%);
+      }
+
+      @keyframes fadeInBubble {
+        from {
+          opacity: 0;
+          transform: scale(0.5) translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+
+      .grass {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+        background: linear-gradient(to bottom, #7cb342, #558b2f);
+      }
+
+      .flower {
+        position: absolute;
+        bottom: 60px;
+        font-size: 30px;
+        animation: flowerSway 2s infinite ease-in-out;
+      }
+
+      @keyframes flowerSway {
+        0%,
+        100% {
+          transform: rotate(-5deg);
+        }
+        50% {
+          transform: rotate(5deg);
+        }
+      }
+
+      /* Panda with sign */
+      .panda-with-sign {
+        position: relative;
+        display: inline-block;
+        margin: 40px 0;
+      }
+
+      .panda-emoji {
+        font-size: 180px;
+        display: block;
+        cursor: pointer;
+        transition: transform 0.3s;
+        filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.3));
+        position: relative;
+        z-index: 1;
+      }
+
+      .panda-emoji:hover {
+        transform: scale(1.1);
+      }
+
+      .panda-sign {
+        position: absolute;
+        bottom: -60px;
+        left: 50%;
+        transform: translateX(-50%) rotate(-5deg);
+        background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);
+        padding: 15px 30px;
+        border: 5px solid #333;
+        border-radius: 15px;
+        font-weight: bold;
+        font-size: 1.8em;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        font-family: "Fredoka One", cursive;
+        color: #333;
+        z-index: 0;
+      }
+
+      /* Random surprise elements */
+      .jetpack-panda {
+        position: fixed;
+        font-size: 80px;
+        z-index: 1000;
+        animation: jetpackFly 3s linear;
+        pointer-events: none;
+        filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+      }
+
+      @keyframes jetpackFly {
+        0% {
+          left: -150px;
+          top: 15%;
+          transform: rotate(-20deg) scale(1);
+        }
+        50% {
+          transform: rotate(0deg) scale(1.2);
+        }
+        100% {
+          left: calc(100% + 150px);
+          top: 25%;
+          transform: rotate(20deg) scale(1);
+        }
+      }
+
+      .flying-cake {
+        position: fixed;
+        font-size: 70px;
+        z-index: 1000;
+        animation: cakeFly 4s ease-in-out;
+        pointer-events: none;
+        filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+      }
+
+      @keyframes cakeFly {
+        0% {
+          right: -150px;
+          top: 10%;
+          transform: rotate(0deg) scale(1);
+        }
+        25% {
+          transform: rotate(180deg) scale(1.3);
+        }
+        50% {
+          right: 50%;
+          top: 40%;
+          transform: rotate(360deg) scale(1);
+        }
+        75% {
+          transform: rotate(540deg) scale(1.3);
+        }
+        100% {
+          right: calc(100% + 150px);
+          top: 70%;
+          transform: rotate(720deg) scale(1);
+        }
+      }
+
+      /* Panda reactions */
+      @keyframes laugh {
+        0%,
+        100% {
+          transform: scale(1) rotate(0deg);
+        }
+        10% {
+          transform: scale(1.1) rotate(-5deg);
+        }
+        20% {
+          transform: scale(1.15) rotate(5deg);
+        }
+        30% {
+          transform: scale(1.1) rotate(-5deg);
+        }
+        40% {
+          transform: scale(1.15) rotate(5deg);
+        }
+        50% {
+          transform: scale(1.1) rotate(0deg);
+        }
+      }
+
+      @keyframes dance {
+        0%,
+        100% {
+          transform: rotate(0deg) translateY(0);
+        }
+        15% {
+          transform: rotate(-20deg) scale(1.1) translateY(-10px);
+        }
+        30% {
+          transform: rotate(20deg) scale(0.9) translateY(0);
+        }
+        45% {
+          transform: rotate(-20deg) scale(1.1) translateY(-10px);
+        }
+        60% {
+          transform: rotate(20deg) scale(0.9) translateY(0);
+        }
+        75% {
+          transform: rotate(-10deg) scale(1.05) translateY(-5px);
+        }
+      }
+
+      @keyframes backflip {
+        0% {
+          transform: rotate(0deg) translateY(0);
+        }
+        25% {
+          transform: rotate(90deg) translateY(-80px);
+        }
+        50% {
+          transform: rotate(180deg) translateY(-120px);
+        }
+        75% {
+          transform: rotate(270deg) translateY(-80px);
+        }
+        100% {
+          transform: rotate(360deg) translateY(0);
+        }
+      }
+
+      @keyframes wiggle {
+        0%,
+        100% {
+          transform: rotate(0deg) skewX(0deg);
+        }
+        25% {
+          transform: rotate(5deg) skewX(5deg);
+        }
+        50% {
+          transform: rotate(-5deg) skewX(-5deg);
+        }
+        75% {
+          transform: rotate(5deg) skewX(5deg);
+        }
+      }
+
+      .panda-question {
+        font-size: 2.5em;
+        color: #764ba2;
+        margin: 40px 0;
+        font-family: "Fredoka One", cursive;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin: 40px 0;
+      }
+
+      button {
+        padding: 20px 50px;
+        font-size: 1.5em;
+        border: none;
+        border-radius: 60px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-weight: bold;
+        font-family: "Fredoka One", cursive;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .yes-btn {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        text-transform: uppercase;
+      }
+
+      .yes-btn:hover {
+        transform: scale(1.15) rotate(-3deg);
+        box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5);
+      }
+
+      .no-btn {
+        background: linear-gradient(135deg, #e0e0e0 0%, #bdbdbd 100%);
+        color: #666;
+        position: relative;
+      }
+
+      .no-btn:hover {
+        background: linear-gradient(135deg, #f0f0f0 0%, #d0d0d0 100%);
+      }
+
+      .birthday-message {
+        font-size: 1.8em;
+        color: #764ba2;
+        line-height: 2;
+        margin: 30px 0;
+        font-weight: bold;
+      }
+
+      .confetti {
+        position: fixed;
+        width: 15px;
+        height: 15px;
+        z-index: 999;
+      }
+
+      @keyframes confetti-fall {
+        to {
+          transform: translateY(100vh) rotate(720deg);
+          opacity: 0;
+        }
+      }
+
+      .progress {
+        font-size: 1.5em;
+        color: white;
+        margin: 25px 0;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .speak-btn {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+        margin: 25px;
+      }
+
+      .speak-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 12px 35px rgba(245, 87, 108, 0.5);
+      }
+
+      .cloud {
+        position: absolute;
+        background: white;
+        border-radius: 100px;
+        opacity: 0.9;
+        animation: cloudFloat 25s linear infinite;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      @keyframes cloudFloat {
+        0% {
+          left: -200px;
+        }
+        100% {
+          left: calc(100% + 200px);
+        }
+      }
+
+      .hint-text {
+        color: #999;
+        margin-top: 25px;
+        font-style: italic;
+        font-size: 1.1em;
+      }
+
+      .click-hint {
+        color: #764ba2;
+        margin-top: 25px;
+        font-style: italic;
+        font-size: 1.2em;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      @keyframes memePopIn {
+        0% {
+          transform: translate(-50%, -50%) scale(0) rotate(-180deg);
+          opacity: 0;
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1) rotate(0deg);
+          opacity: 1;
+        }
+      }
+
+      @keyframes memePopOut {
+        0% {
+          transform: translate(-50%, -50%) scale(1) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(0) rotate(180deg);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating background emojis -->
+    <div class="bg-emoji" style="top: 10%; left: 10%; animation-delay: 0s">
+      🎈
+    </div>
+    <div class="bg-emoji" style="top: 70%; left: 80%; animation-delay: 2s">
+      🎂
+    </div>
+    <div class="bg-emoji" style="top: 30%; left: 90%; animation-delay: 4s">
+      🎉
+    </div>
+    <div class="bg-emoji" style="top: 80%; left: 15%; animation-delay: 6s">
+      🎊
+    </div>
+    <div class="bg-emoji" style="top: 50%; left: 5%; animation-delay: 8s">
+      ✨
+    </div>
+
+    <div class="container">
+      <!-- Screen 0: Welcome -->
+      <div id="screen0" class="screen active">
+        <h1>🎉 SURPRISE! 🎉</h1>
+        <div class="card">
+          <div
+            class="welcome-panda"
+            onclick="this.style.transform='rotate(360deg)'"
+          >
+            🐼
+          </div>
+          <div class="welcome-text">
+            Hey Kritka! Ready for some birthday fun? 🎈
+          </div>
+          <button class="start-btn" onclick="startCelebration()">
+            Let's Party! 🎊
+          </button>
+        </div>
+      </div>
+
+      <!-- Screen 1: Balloon Popping Game -->
+      <div id="screen1" class="screen">
+        <h1>🎈 Pop The Balloons! 🎈</h1>
+        <div class="card">
+          <p
+            style="
+              font-size: 1.5em;
+              color: #764ba2;
+              margin-bottom: 20px;
+              font-weight: bold;
+            "
+          >
+            Pop all balloons to unlock your surprise! ✨
+          </p>
+          <div class="progress" id="progress">🎈 Balloons: 5 left!</div>
+          <div class="balloon-container" id="balloonContainer">
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 2: Walking Panda Story -->
+      <div id="screen2" class="screen">
+        <h1>🐼 Special Delivery! 🐼</h1>
+        <div class="card">
+          <div class="story-container" id="storyContainer">
+            <div class="sun"></div>
+            <!-- Clouds -->
+            <div
+              class="cloud"
+              style="width: 120px; height: 60px; top: 40px; animation-delay: 0s"
+            ></div>
+            <div
+              class="cloud"
+              style="
+                width: 100px;
+                height: 50px;
+                top: 100px;
+                animation-delay: 5s;
+              "
+            ></div>
+            <div
+              class="cloud"
+              style="
+                width: 140px;
+                height: 70px;
+                top: 160px;
+                animation-delay: 10s;
+              "
+            ></div>
+            <!-- Flowers -->
+            <div class="flower" style="left: 15%; animation-delay: 0s">🌸</div>
+            <div class="flower" style="left: 35%; animation-delay: 0.5s">
+              🌺
+            </div>
+            <div class="flower" style="left: 55%; animation-delay: 1s">🌼</div>
+            <div class="flower" style="left: 75%; animation-delay: 1.5s">
+              🌻
+            </div>
+            <div class="grass"></div>
+            <div class="walking-panda">🐼</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 3: Panda Question -->
+      <div id="screen3" class="screen">
+        <h1>🤔 Important Question! 🤔</h1>
+        <div class="card">
+          <div style="font-size: 120px; margin: 20px 0">🐼❓</div>
+          <div class="panda-question">Are you a Panda? 🐼</div>
+          <div class="button-container">
+            <button class="yes-btn" onclick="answerYes()">YES! 🎉</button>
+            <button class="no-btn" id="noBtn">No</button>
+          </div>
+          <p class="hint-text">(Psst... Pandas are awesome! 😉)</p>
+        </div>
+      </div>
+
+      <!-- Screen 4: Birthday Message with Interactive Panda -->
+      <div id="screen4" class="screen">
+        <h1>🎂 HAPPY 21ST BIRTHDAY! 🎂</h1>
+        <div class="card">
+          <div class="panda-with-sign">
+            <div
+              class="panda-emoji"
+              id="interactivePanda"
+              onclick="pandaReact()"
+            >
+              🐼
+            </div>
+            <div class="panda-sign">Kritka is 21! 🎉</div>
+          </div>
+          <div class="birthday-message" id="birthdayMessage">
+            🎊 Happy Birthday Kritka! 🎊<br />
+            21 years of being absolutely PANDAtastic! 🐼✨<br />
+            May your day overflow with bamboo, cuddles & endless joy! 🎈💕<br />
+            You're incredible panda 💝<br />
+            Here's to a year full of adventures, laughter & pure happiness! 🌟🎉
+          </div>
+          <button class="speak-btn" onclick="speakMessage()">
+            🔊 Play Birthday Message!
+          </button>
+          <p class="click-hint">
+            👆 Click the panda for surprise reactions! 🎭
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let balloonsPopped = 0;
+      const totalBalloons = 5;
+      let musicContext = null;
+      let musicGainNode = null;
+      let currentNote = 0;
+      let pandaReactionIndex = 0;
+
+      const reactions = ["laugh", "dance", "backflip", "wiggle"];
+      const musicNotes = [
+        523.25, 587.33, 659.25, 698.46, 783.99, 880.0, 987.77, 1046.5,
+      ];
+      const popEmojis = ["💥", "✨", "🌟", "⭐", "💫", "🎊", "🎉"];
+
+      function startCelebration() {
+        document.getElementById("screen0").classList.remove("active");
+        document.getElementById("screen1").classList.add("active");
+
+        startBackgroundMusic();
+        startRandomSurprises();
+      }
+
+      function startBackgroundMusic() {
+        musicContext = new (window.AudioContext || window.webkitAudioContext)();
+        musicGainNode = musicContext.createGain();
+        musicGainNode.gain.value = 0.15;
+        musicGainNode.connect(musicContext.destination);
+      }
+
+      function playMusicNote() {
+        if (!musicContext) return;
+
+        const oscillator = musicContext.createOscillator();
+        const noteGain = musicContext.createGain();
+
+        oscillator.connect(noteGain);
+        noteGain.connect(musicGainNode);
+
+        oscillator.frequency.value =
+          musicNotes[currentNote % musicNotes.length];
+        oscillator.type = "sine";
+
+        noteGain.gain.setValueAtTime(0.15, musicContext.currentTime);
+        noteGain.gain.exponentialRampToValueAtTime(
+          0.01,
+          musicContext.currentTime + 0.3
+        );
+
+        oscillator.start(musicContext.currentTime);
+        oscillator.stop(musicContext.currentTime + 0.3);
+
+        currentNote++;
+      }
+
+      document.querySelectorAll(".balloon").forEach((balloon) => {
+        balloon.addEventListener("click", function (e) {
+          if (!this.classList.contains("popped")) {
+            // Create pop emoji
+            const popEmoji = document.createElement("div");
+            popEmoji.className = "pop-emoji";
+            popEmoji.textContent =
+              popEmojis[Math.floor(Math.random() * popEmojis.length)];
+            popEmoji.style.left = e.clientX + "px";
+            popEmoji.style.top = e.clientY + "px";
+            popEmoji.style.setProperty(
+              "--x",
+              (Math.random() - 0.5) * 200 + "px"
+            );
+            popEmoji.style.setProperty(
+              "--y",
+              (Math.random() - 0.5) * 200 + "px"
+            );
+            document.body.appendChild(popEmoji);
+            setTimeout(() => popEmoji.remove(), 1000);
+
+            // Pop sound
+            const audioContext = new (window.AudioContext ||
+              window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+
+            oscillator.frequency.value = 900;
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(
+              0.01,
+              audioContext.currentTime + 0.1
+            );
+
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.1);
+
+            playMusicNote();
+
+            this.classList.add("popped");
+            balloonsPopped++;
+
+            document.getElementById("progress").textContent = `🎈 Balloons: ${
+              totalBalloons - balloonsPopped
+            } left!`;
+
+            if (balloonsPopped === totalBalloons) {
+              document.getElementById("progress").textContent =
+                "🎉 All popped! Amazing!";
+              setTimeout(() => {
+                document.getElementById("screen1").classList.remove("active");
+                document.getElementById("screen2").classList.add("active");
+                startPandaStory();
+              }, 800);
+            }
+          }
+        });
+      });
+
+      function startPandaStory() {
+        const container = document.getElementById("storyContainer");
+        const messages = [
+          "Hey Kritka! 🐼",
+          "Happy 21st Birthday! 🎉",
+          "You're officially AMAZING! ✨",
+          "Time to party like a panda! 🎊",
+          "But first... a question! 🤔",
+        ];
+
+        let delay = 1500;
+        messages.forEach((msg, index) => {
+          setTimeout(() => {
+            const bubble = document.createElement("div");
+            bubble.className = "dialogue-bubble";
+            bubble.textContent = msg;
+            bubble.style.top = 60 + index * 15 + "px";
+            bubble.style.left = 10 + index * 15 + "%";
+            bubble.style.animationDelay = "0s";
+            container.appendChild(bubble);
+
+            playChirp(index);
+          }, delay);
+          delay += 1800;
+        });
+
+        setTimeout(() => {
+          document.getElementById("screen2").classList.remove("active");
+          document.getElementById("screen3").classList.add("active");
+        }, delay + 800);
+      }
+
+      function playChirp(pitch) {
+        const audioContext = new (window.AudioContext ||
+          window.webkitAudioContext)();
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+
+        const baseFreq = 700 + pitch * 100;
+        oscillator.frequency.value = baseFreq;
+        oscillator.frequency.exponentialRampToValueAtTime(
+          baseFreq + 300,
+          audioContext.currentTime + 0.1
+        );
+        gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(
+          0.01,
+          audioContext.currentTime + 0.15
+        );
+
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + 0.15);
+      }
+
+      function startRandomSurprises() {
+        setInterval(() => {
+          if (Math.random() > 0.65) {
+            const jetpack = document.createElement("div");
+            jetpack.className = "jetpack-panda";
+            jetpack.innerHTML = "🐼🚀💨";
+            jetpack.style.top = Math.random() * 40 + 10 + "%";
+            document.body.appendChild(jetpack);
+
+            const whoosh = new (window.AudioContext ||
+              window.webkitAudioContext)();
+            const osc = whoosh.createOscillator();
+            const gain = whoosh.createGain();
+            osc.connect(gain);
+            gain.connect(whoosh.destination);
+            osc.frequency.setValueAtTime(200, whoosh.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(
+              100,
+              whoosh.currentTime + 0.5
+            );
+            gain.gain.setValueAtTime(0.1, whoosh.currentTime);
+            gain.gain.exponentialRampToValueAtTime(
+              0.01,
+              whoosh.currentTime + 0.5
+            );
+            osc.start();
+            osc.stop(whoosh.currentTime + 0.5);
+
+            setTimeout(() => jetpack.remove(), 3000);
+          }
+        }, 7000);
+
+        setInterval(() => {
+          if (Math.random() > 0.6) {
+            const cake = document.createElement("div");
+            cake.className = "flying-cake";
+            cake.innerHTML = "🎂✨🎉";
+            cake.style.top = Math.random() * 40 + 20 + "%";
+            document.body.appendChild(cake);
+
+            setTimeout(() => cake.remove(), 4000);
+          }
+        }, 9000);
+      }
+
+      const noBtn = document.getElementById("noBtn");
+      let noBtnClickCount = 0;
+
+      noBtn.addEventListener("mouseenter", function () {
+        const maxX = window.innerWidth - 200;
+        const maxY = window.innerHeight - 100;
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
+        this.style.position = "fixed";
+        this.style.left = x + "px";
+        this.style.top = y + "px";
+        this.style.transition = "all 0.3s ease";
+      });
+
+      noBtn.addEventListener("click", function () {
+        noBtnClickCount++;
+        if (noBtnClickCount >= 3) {
+          this.textContent = "Fine, you're a panda! 🐼";
+          setTimeout(() => answerYes(), 1000);
+        }
+      });
+
+      function answerYes() {
+        createConfetti();
+        document.getElementById("screen3").classList.remove("active");
+        document.getElementById("screen4").classList.add("active");
+
+        playCelebrationMelody();
+      }
+
+      function playCelebrationMelody() {
+        const melody = [
+          523, 523, 587, 523, 698, 659, 523, 523, 587, 523, 784, 698, 523, 523,
+          1047, 880, 698, 659, 587,
+        ];
+        let time = 0;
+
+        melody.forEach((freq, index) => {
+          setTimeout(() => {
+            const audioContext = new (window.AudioContext ||
+              window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+
+            oscillator.frequency.value = freq;
+            oscillator.type = "sine";
+            gainNode.gain.setValueAtTime(0.25, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(
+              0.01,
+              audioContext.currentTime + 0.4
+            );
+
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.4);
+          }, time);
+          time += 280;
+        });
+      }
+
+      function pandaReact() {
+        const panda = document.getElementById("interactivePanda");
+        const reaction = reactions[pandaReactionIndex % reactions.length];
+
+        panda.style.animation = "none";
+        setTimeout(() => {
+          panda.style.animation = `${reaction} 1s ease-in-out`;
+        }, 10);
+
+        playReactionSound(reaction);
+
+        const reactionEmojis = {
+          laugh: "😂",
+          dance: "💃",
+          backflip: "🤸",
+          wiggle: "🎵",
+        };
+
+        const emoji = document.createElement("div");
+        emoji.className = "pop-emoji";
+        emoji.textContent = reactionEmojis[reaction];
+        emoji.style.left = "50%";
+        emoji.style.top = "30%";
+        emoji.style.setProperty("--x", (Math.random() - 0.5) * 100 + "px");
+        emoji.style.setProperty("--y", -100 + "px");
+        document.body.appendChild(emoji);
+        setTimeout(() => emoji.remove(), 1000);
+
+        pandaReactionIndex++;
+      }
+
+      function playReactionSound(reaction) {
+        const audioContext = new (window.AudioContext ||
+          window.webkitAudioContext)();
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+
+        switch (reaction) {
+          case "laugh":
+            oscillator.frequency.setValueAtTime(600, audioContext.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(
+              900,
+              audioContext.currentTime + 0.15
+            );
+            oscillator.frequency.exponentialRampToValueAtTime(
+              600,
+              audioContext.currentTime + 0.3
+            );
+            gainNode.gain.setValueAtTime(0.25, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(
+              0.01,
+              audioContext.currentTime + 0.3
+            );
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.3);
+            break;
+          case "dance":
+            [800, 1000, 1200, 1000].forEach((freq, i) => {
+              setTimeout(() => {
+                const osc = audioContext.createOscillator();
+                const gain = audioContext.createGain();
+                osc.connect(gain);
+                gain.connect(audioContext.destination);
+                osc.frequency.value = freq;
+                gain.gain.setValueAtTime(0.2, audioContext.currentTime);
+                gain.gain.exponentialRampToValueAtTime(
+                  0.01,
+                  audioContext.currentTime + 0.1
+                );
+                osc.start();
+                osc.stop(audioContext.currentTime + 0.1);
+              }, i * 100);
+            });
+            break;
+          case "backflip":
+            oscillator.frequency.setValueAtTime(400, audioContext.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(
+              1200,
+              audioContext.currentTime + 0.5
+            );
+            gainNode.gain.setValueAtTime(0.25, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(
+              0.01,
+              audioContext.currentTime + 0.5
+            );
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.5);
+            break;
+          case "wiggle":
+            oscillator.frequency.value = 550;
+            oscillator.frequency.exponentialRampToValueAtTime(
+              650,
+              audioContext.currentTime + 0.1
+            );
+            oscillator.frequency.exponentialRampToValueAtTime(
+              550,
+              audioContext.currentTime + 0.2
+            );
+            gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(
+              0.01,
+              audioContext.currentTime + 0.2
+            );
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.2);
+            break;
+        }
+      }
+
+      function createConfetti() {
+        const colors = [
+          "#ff6b9d",
+          "#4ecdc4",
+          "#ffd93d",
+          "#95e1d3",
+          "#c06c84",
+          "#f093fb",
+          "#764ba2",
+        ];
+        const shapes = ["🎊", "🎉", "✨", "⭐", "💫", "🌟"];
+
+        for (let i = 0; i < 200; i++) {
+          setTimeout(() => {
+            const confetti = document.createElement("div");
+            confetti.className = "confetti";
+            confetti.style.left = Math.random() * 100 + "%";
+            confetti.style.top = -20 + "px";
+
+            if (Math.random() > 0.5) {
+              confetti.style.background =
+                colors[Math.floor(Math.random() * colors.length)];
+              confetti.style.borderRadius = Math.random() > 0.5 ? "50%" : "0";
+            } else {
+              confetti.textContent =
+                shapes[Math.floor(Math.random() * shapes.length)];
+              confetti.style.background = "transparent";
+              confetti.style.fontSize = "20px";
+            }
+
+            confetti.style.animation = `confetti-fall ${
+              2 + Math.random() * 2
+            }s linear`;
+            confetti.style.animationDelay = Math.random() * 0.5 + "s";
+            document.body.appendChild(confetti);
+
+            setTimeout(() => confetti.remove(), 4000);
+          }, i * 15);
+        }
+      }
+
+      function speakMessage() {
+        // Stop any playing music first
+        stopBackgroundMusic();
+
+        // Play Happy Birthday song first
+        playHappyBirthdaySong();
+
+        // Then speak the message with Shinchan's mischievous voice
+        if ("speechSynthesis" in window) {
+          setTimeout(() => {
+            const utterance = new SpeechSynthesisUtterance(
+              "Oyeee Kritikaaa! It’s me, Bhumi" +
+                "So you’re 21 now? Congrats… you’ve officially entered the ‘don’t know what I’m doing but I’ll pretend I do’ club " +
+                "Are you Wi-Fi? Because I’m totally feeling a strong connection " +
+                "Happy Birthday, you walking comedy show " +
+                "Now give me cake before I start breakdancing in slow motion!"
+            );
+            utterance.rate = 1.3; // Faster for energetic Shinchan voice
+            utterance.pitch = 1.8; // Very high pitch for childish Shinchan voice
+            utterance.volume = 1;
+
+            const voices = speechSynthesis.getVoices();
+            // Try to find a young/child-like voice
+            const shinchanVoice = voices.find(
+              (voice) =>
+                voice.name.includes("Female") ||
+                voice.name.includes("Google") ||
+                voice.name.includes("Child") ||
+                voice.lang.includes("en")
+            );
+            if (shinchanVoice) utterance.voice = shinchanVoice;
+
+            speechSynthesis.cancel();
+            speechSynthesis.speak(utterance);
+
+            // Show memes during voiceover
+            showFunnyMemes();
+          }, 6000); // Wait for birthday song to finish
+        } else {
+          alert(
+            "🎉 Your browser doesn't support text-to-speech, but you're still PANDAtastic, Kritka! 🐼"
+          );
+        }
+      }
+
+      function playHappyBirthdaySong() {
+        const song = [
+          { note: 264, duration: 400 },
+          { note: 264, duration: 200 }, // Happy birth-
+          { note: 297, duration: 600 },
+          { note: 264, duration: 600 }, // day to you
+          { note: 352, duration: 600 },
+          { note: 330, duration: 1200 }, // Happy birth-day
+          { note: 264, duration: 400 },
+          { note: 264, duration: 200 }, // Happy birth-
+          { note: 297, duration: 600 },
+          { note: 264, duration: 600 }, // day to you
+          { note: 396, duration: 600 },
+          { note: 352, duration: 1200 }, // Happy birth-day
+          { note: 264, duration: 400 },
+          { note: 264, duration: 200 }, // Happy birth-
+          { note: 528, duration: 600 },
+          { note: 440, duration: 600 }, // day dear Krit-
+          { note: 352, duration: 600 },
+          { note: 330, duration: 600 }, // ka Happy
+          { note: 297, duration: 600 }, // birthday
+          { note: 466, duration: 400 },
+          { note: 466, duration: 200 }, // Happy birth-
+          { note: 440, duration: 600 },
+          { note: 352, duration: 600 }, // day to you
+          { note: 396, duration: 600 },
+          { note: 352, duration: 1200 }, // Happy birthday
+        ];
+
+        let time = 0;
+        const audioContext = new (window.AudioContext ||
+          window.webkitAudioContext)();
+
+        song.forEach((note, index) => {
+          setTimeout(() => {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+
+            oscillator.frequency.value = note.note;
+            oscillator.type = "sine";
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(
+              0.01,
+              audioContext.currentTime + note.duration / 1000
+            );
+
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + note.duration / 1000);
+          }, time);
+          time += note.duration;
+        });
+      }
+
+      function stopBackgroundMusic() {
+        if (musicContext) {
+          try {
+            musicContext.close();
+          } catch (e) {}
+        }
+      }
+
+      function showFunnyMemes() {
+        const memes = [
+          {
+            gif: "https://media.giphy.com/media/ICOgUNjpvO0PC/giphy.gif",
+            text: "21 and still fabulous! 💁‍♀️",
+          },
+          {
+            gif: "https://media.giphy.com/media/g5R9dok94mrIvplmZd/giphy.gif",
+            text: "Party Panda Mode: ACTIVATED! 🎉",
+          },
+          {
+            gif: "https://media.giphy.com/media/xUOxeZUc8UFwMgH2MM/giphy.gif",
+            text: "When you realize you're 21! 🎂",
+          },
+        ];
+
+        let delay = 3000;
+        memes.forEach((meme, index) => {
+          setTimeout(() => {
+            const memeDiv = document.createElement("div");
+            memeDiv.style.cssText = `
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%) scale(0);
+                        background: white;
+                        padding: 20px;
+                        border-radius: 20px;
+                        box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+                        z-index: 10000;
+                        text-align: center;
+                        animation: memePopIn 0.5s forwards;
+                        max-width: 400px;
+                    `;
+
+            memeDiv.innerHTML = `
+                        <img src="${meme.gif}" style="width: 100%; border-radius: 15px; margin-bottom: 15px;">
+                        <div style="font-size: 1.5em; color: #764ba2; font-weight: bold; font-family: 'Fredoka One', cursive;">
+                            ${meme.text}
+                        </div>
+                    `;
+
+            document.body.appendChild(memeDiv);
+
+            setTimeout(() => {
+              memeDiv.style.animation = "memePopOut 0.5s forwards";
+              setTimeout(() => memeDiv.remove(), 500);
+            }, 3000);
+          }, delay);
+          delay += 3500;
+        });
+      }
+
+      if ("speechSynthesis" in window) {
+        speechSynthesis.getVoices();
+        window.speechSynthesis.onvoiceschanged = () => {
+          speechSynthesis.getVoices();
+        };
+      }
+    </script>
+  </body>
+</html>
